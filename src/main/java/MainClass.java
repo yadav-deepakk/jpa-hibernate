@@ -8,6 +8,7 @@ import crudopertaion.UpdatePokemon;
 import crudopertaion.DeletePokemon;
 import crudopertaion.InsertPokemon;
 import entities.Pokemon;
+import enums.PokemonColor;
 
 public class MainClass {
 
@@ -18,9 +19,9 @@ public class MainClass {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 
-		Pokemon pikachu = new Pokemon("Pikachu", "Electrical", 100);
-		Pokemon charlizard = new Pokemon("Charlizard", "Fire", 85);
-		Pokemon meowth = new Pokemon("Meowth", "Cat", 77);
+		Pokemon pikachu = new Pokemon("Pikachu", "Electrical", 100, PokemonColor.YELLOW);
+		Pokemon charlizard = new Pokemon("Charlizard", "Fire", 85, PokemonColor.ORANGE);
+		Pokemon meowth = new Pokemon("Meowth", "Cat", 77, PokemonColor.CREAM);
 		Pokemon[] pokemonArr = { pikachu, charlizard, meowth };
 
 		// C - Create
@@ -37,8 +38,8 @@ public class MainClass {
 		UpdatePokemon.updatePokemonType(entityManager, transaction, 10L, "Fire"); // return false
 
 		// D - Delete
-		DeletePokemon.deletePokemonById(entityManager, transaction, 3L); 
-		DeletePokemon.deletePokemonById(entityManager, transaction, 100L); 
+		// DeletePokemon.deletePokemonById(entityManager, transaction, 3L); 
+		// DeletePokemon.deletePokemonById(entityManager, transaction, 100L); 
 	}
 
 }

@@ -2,31 +2,46 @@ package entities;
 
 import javax.persistence.*;
 
+import enums.PokemonColor;
+
 @Entity
 public class Pokemon {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String name;
-	
+
 	@Column(nullable = false)
 	private String type;
-	
+
 	@Column(nullable = false)
 	private int power;
-	
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "color", nullable = false)
+	private PokemonColor color;
+
 	public Pokemon() {
-		super(); 
+		super();
 	}
 
-	public Pokemon(String name, String type, int power) {
+	public Pokemon(String name, String type, int power, PokemonColor color) {
 		super();
 		this.name = name;
 		this.type = type;
 		this.power = power;
+		this.color = color;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -53,9 +68,18 @@ public class Pokemon {
 		this.power = power;
 	}
 
+	public PokemonColor getColor() {
+		return color;
+	}
+
+	public void setColor(PokemonColor color) {
+		this.color = color;
+	}
+
 	@Override
 	public String toString() {
-		return "pokemon [name=" + name + ", type=" + type + ", power=" + power + "]";
+		return "Pokemon [id=" + id + ", name=" + name + ", type=" + type + ", power=" + power + ", color=" + color
+				+ "]";
 	}
 
 }
